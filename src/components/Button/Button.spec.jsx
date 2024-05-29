@@ -5,11 +5,11 @@ import userEvent from "@testing-library/user-event";
 describe('<Button />', () => {
     it('should render the button with the text "Load More"', () => {
         render(<Button text="Load more" />);
-        expect.assertions(1);
         const button = screen.getByRole('button', {
             name: /load more/i
         });
         expect(button).toBeInTheDocument();
+        expect.assertions(1);
     });
 
     it('should call function on button click', () => {
