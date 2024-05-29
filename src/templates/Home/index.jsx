@@ -44,46 +44,45 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    await loadPosts();
+    loadPosts();
   }, []);
-}
 
-return (
-  <section className="container">
-    <div className="search-container">
-      {!!searchValue && (
-        <>
-          <h1>Search Value: {searchValue}</h1>
-        </>
+  return (
+    <section className="container">
+      <div className="search-container">
+        {!!searchValue && (
+          <>
+            <h1>Search Value: {searchValue}</h1>
+          </>
+        )}
+        <TextInput
+          searchValue={searchValue}
+          handleChange={handleChange} />
+      </div>
+
+      {filteredPosts.length > 0 && (
+        <Posts
+          posts={filteredPosts}
+        />
       )}
-      <TextInput
-        searchValue={searchValue}
-        handleChange={handleChange} />
-    </div>
 
-    {filteredPosts.length > 0 && (
-      <Posts
-        posts={filteredPosts}
-      />
-    )}
-
-    {filteredPosts.length === 0 && (
-      <p>Não existem posts</p>
-    )}
-
-    <div className="button-container">
-      {!searchValue && (
-        <>
-          <Button
-            text="Load more posts"
-            onClick={loadMorePosts}
-            disabled={noMorePosts}
-          />
-        </>
+      {filteredPosts.length === 0 && (
+        <p>Não existem posts</p>
       )}
-    </div>
-  </section>
-);
+
+      <div className="button-container">
+        {!searchValue && (
+          <>
+            <Button
+              text="Load more posts"
+              onClick={loadMorePosts}
+              disabled={noMorePosts}
+            />
+          </>
+        )}
+      </div>
+    </section>
+  );
 
 }
 
@@ -123,12 +122,3 @@ return (
 
 //   render() {
 //     const { posts, page, postsPerPage, allPosts, searchValue } = this.state;
-
-
-
-
-
-//   }
-// }
-
-export default Home;
