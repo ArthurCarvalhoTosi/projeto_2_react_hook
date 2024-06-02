@@ -29,7 +29,7 @@ export const Home = () => {
   }, [])
 
   useEffect(() => {
-    handleLoadPosts(2, postsPerPage);
+    handleLoadPosts(1, postsPerPage);
   }, [handleLoadPosts, page, postsPerPage]);
 
   const loadMorePosts = () => {
